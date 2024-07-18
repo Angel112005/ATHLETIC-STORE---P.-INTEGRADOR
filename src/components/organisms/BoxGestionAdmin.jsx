@@ -7,10 +7,11 @@ function BoxGestionAdmin({onAddProductClick}){
                 imageSrc="/AddIcon.png"
                 alt="Imagen"
                 label="AGREGAR"
+                className="bg-white"
                 onClick={onAddProductClick}
             ></ActionButton>
         </div>
     )
 }
 
-export default BoxGestionAdmin
+export default BoxGestionAdmin;

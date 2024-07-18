@@ -5,19 +5,24 @@ function PedidosAdmin(){
     const navigate = useNavigate();
 
     return(
-        <>
-        <Header 
-        title="GESTIÓN PEDIDOS" 
-        logoSrc="/LOGO_BLACK.jpeg" 
-        homeIconSrc="/path/to/home_icon.png"
-        onHomeClick = {() => navigate("/")}
-        // isLoggedIn={isLoggedIn}
-        // onLogoutClick={handleLogout}
-        // onProfileClick={handleProfileClick}
-        />
-
         
-        </>
+        <div className="min-h-screen bg-black">
+            <Header 
+            title="GESTIÓN PEDIDOS" 
+            logoSrc="/LOGO_BLACK.jpeg"
+            className="bg-white" 
+            homeIconSrc="/path/to/home_icon.png"
+            onHomeClick = {() => navigate("/")}
+            // isLoggedIn={isLoggedIn}
+            // onLogoutClick={handleLogout}
+            // onProfileClick={handleProfileClick}
+            />
+            <div className="text-white text-center mt-5">
+                <h1 className="text-2xl">HISTORIAL DE PEDIDOS</h1>
+            </div>
+
+        </div>
+        
     )
 }
 

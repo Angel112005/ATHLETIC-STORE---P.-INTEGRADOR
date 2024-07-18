@@ -4,11 +4,11 @@ import Logo from '../atoms/Logo';
 import HeaderTitle from '../atoms/HeaderTitle';
 import Button from '../atoms/Button';
 
-function Header({ onHomeClick, logoSrc, homeIconSrc, title, isLoggedIn, onLoginClick, onRegisterClick, onProfileClick, onLogoutClick }) {
+function Header({ onHomeClick, logoSrc, homeIconSrc, title, isLoggedIn, onLoginClick, onRegisterClick, onProfileClick, onLogoutClick, className }) {
     const navigate = useNavigate();
 
     return (
-        <header className="flex justify-between items-center py-4 px-4 md:px-8 backdrop-brightness-50 ">
+        <header className={`flex justify-between items-center py-4 px-4 md:px-8  ${className}`}>
             <button onClick={onHomeClick}>
                 <Logo src={logoSrc} alt="Logo" className="rounded-full w-20" />
             </button>
@@ -25,7 +25,7 @@ function Header({ onHomeClick, logoSrc, homeIconSrc, title, isLoggedIn, onLoginC
                     </>
                 ) : (
                     <>
-                        <Button onClick={() => navigate('/login')}>Iniciar Sesión</Button>
+                        <Button onClick={() => navigate('/login')} >Iniciar Sesión</Button>
                         <Button onClick={() => navigate('/register')}>Registrarse</Button>
                     </>
                 )}
