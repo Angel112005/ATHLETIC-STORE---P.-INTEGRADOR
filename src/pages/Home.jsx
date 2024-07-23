@@ -8,7 +8,8 @@ function Home() {
     const navigate = useNavigate();
 
     return (
-        <div className="min-h-screen bg-black">
+        <div className="min-h-screen  w-full overflow-hidden bg-gradient-to-r from-neutral-700 via-black to-stone-700 bg-[length:400%_400%] animate-gradient-x ">
+            <HeaderClient title='WEARING WINNERS' logoSrc='/profile.png' className='text-white ' ></HeaderClient>
             <Header
                 title="ATHLETIC_STORE"
                 logoSrc="/LOGO_BLACK.jpeg"
@@ -34,7 +35,7 @@ function Home() {
                         />
                     </div>
                 </div>
-                <h2 className="text-3xl font-bold text-center mt-6 text-4xl text-white">CATEGORÍAS</h2>
+                <h2 className="text-3xl font-serif text-center mt-6 text-4xl text-white">CATEGORÍAS</h2>
                 <BoxHomeClient
                     onRunClick={() => navigate('/Running')}
                     onFutClick={() => navigate('/Futbol')}
