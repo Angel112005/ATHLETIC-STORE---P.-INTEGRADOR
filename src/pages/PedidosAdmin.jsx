@@ -18,7 +18,7 @@ function PedidosAdmin(){
             // onProfileClick={handleProfileClick}
             />
             <div className="text-white text-center mt-5">
-                <h1 className="text-2xl">HISTORIAL DE PEDIDOS</h1>
+                {/* <h1 className="text-2xl">HISTORIAL DE PEDIDOS</h1> */}
             </div>
 
         </div>

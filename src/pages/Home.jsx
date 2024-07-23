@@ -1,14 +1,18 @@
+// import './index.css'
+
 import React from 'react';
 import Header from '../components/organisms/Header';
 import { useNavigate } from 'react-router-dom';
 import BoxHomeClient from '../components/organisms/BoxHomeClient';
 import BoxCatologoHome from '../components/organisms/BoxCatalogoHome';
+import HeaderClient from '../components/organisms/HeaderClient';
 
 function Home() {
     const navigate = useNavigate();
 
     return (
-        <div className="min-h-screen bg-black">
+        <div className="min-h-screen  w-full overflow-hidden bg-gradient-to-r from-neutral-700 via-black to-stone-700 bg-[length:400%_400%] animate-gradient-x ">
+            <HeaderClient title='WEARING WINNERS' logoSrc='/profile.png' className='text-white ' ></HeaderClient>
             <Header
                 title="ATHLETIC_STORE"
                 logoSrc="/LOGO_BLACK.jpeg"
@@ -19,7 +23,7 @@ function Home() {
                 // onProfileClick={handleProfileClick}
             />
             <div className="p-2  ">
-                <h2 className="text-3xl mb-2 text-center font-extrabold text-white text-6xl mt-4 mb-6">NOVEDADES</h2>
+                <h2 className="text-3xl mb-2 text-center font-serif  text-white text-6xl mt-4 mb-6 ">NOVEDADES</h2>
                 <div className="flex justify-evenly  ">
                     <div className="flex items-center border rounded-3xl p-4 bg-amber-200 w-2/3">
                         <img src="/NikeInvincible3.jpeg" alt="Nike Invincible Run 3" className="w-48 h-auto mr-8 ml-6 rounded-3xl" />
@@ -34,7 +38,7 @@ function Home() {
                         />
                     </div>
                 </div>
-                <h2 className="text-3xl font-bold text-center mt-6 text-4xl text-white">CATEGORÍAS</h2>
+                <h2 className="text-3xl font-serif text-center mt-6 text-4xl text-white">CATEGORÍAS</h2>
                 <BoxHomeClient
                     onRunClick={() => navigate('/Running')}
                     onFutClick={() => navigate('/Futbol')}

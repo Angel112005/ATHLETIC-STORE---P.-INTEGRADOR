@@ -1,21 +1,9 @@
-// import React from 'react';
+import React from 'react';
 
-// function Label({ children, className }) {
-//     return (
-//         <div className={`text-center text-xl ${className}`}>
-//             {children}
-//         </div>
-//     );
-// }
-
-// export default Label;
-
-function Label({ className, children }) {
-    return (
-        <div className={`text-center ${className}`}>
-            {children}
-        </div>
-    );
+export default function Label({ text, htmlFor, className }) {
+  return (
+    <label htmlFor={htmlFor} className={`  ${className}`}>
+      {text}
+    </label>
+  );
 }
-
-export default Label;
