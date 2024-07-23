@@ -1,7 +1,12 @@
 
 
 
+
+
 import React from 'react';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useProductContext } from '../../context/ProductContext';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProductContext } from '../../context/ProductContext';
@@ -10,11 +15,18 @@ function ProductCardAdmin({ product, onEdit }) {
   const { deleteProduct } = useProductContext();
   const navigate = useNavigate();
 
+function ProductCardAdmin({ product, onEdit }) {
+  const { deleteProduct } = useProductContext();
+  const navigate = useNavigate();
+
   const handleEdit = () => {
+    onEdit(`/edit/${product.Folio_producto}`);
     onEdit(`/edit/${product.Folio_producto}`);
   };
 
   const handleDelete = () => {
+    // onDelete(product.Folio_producto);
+    deleteProduct(product.Folio_producto);
     // onDelete(product.Folio_producto);
     deleteProduct(product.Folio_producto);
   };
@@ -23,14 +35,19 @@ function ProductCardAdmin({ product, onEdit }) {
     console.log("Estoy recibiendo esto:", product)
   },[])
 
+  useEffect(()=>{
+    console.log("Estoy recibiendo esto:", product)
+  },[])
+
   return (
-    <div className="border grid justify-center w-64 p-4 rounded-lg shadow-2xl bg-white mt-6 mb-5 transform transition-transform duration-300 hover:scale-110">
-      <img src={`https://athleticstoreapi.integrador.xyz/${product.Imagen}`} alt={product.Nombre_modelo} className=" rounded-3xl h-48 object-contain mb-2" />
+    <div className="border w-72 p-4 rounded-lg shadow-2xl bg-white mt-6 mb-5 transform transition-transform duration-300 hover:scale-110">
+      <img src={`https://athleticstoreapi.integrador.xyz/${product.Imagen}`} alt={product.Nombre_modelo} className="w-full h-48 object-contain mb-2" />
       <h3 className="text-xl font-bold text-center">{product.Nombre_modelo}</h3>
       <p>${product.Precio}</p>
       <p>{product.Categoria}</p>
       <p>{product.Marca}</p>
       <div className="flex justify-between mt-4">
+        <button onClick={() => navigate(`/EditarProducto/${product.Folio_producto}`)} className="bg-black text-white py-2 px-4 rounded hover:bg-yellow-500 hover:text-black rounded-lg">
         <button onClick={() => navigate(`/EditarProducto/${product.Folio_producto}`)} className="bg-black text-white py-2 px-4 rounded hover:bg-yellow-500 hover:text-black rounded-lg">
           Editar
         </button>

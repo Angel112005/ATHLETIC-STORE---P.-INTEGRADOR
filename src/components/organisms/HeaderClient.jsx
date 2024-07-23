@@ -15,6 +15,33 @@ function HeaderClient({ onHomeClick, logoSrc, homeIconSrc, title, isLoggedIn, on
             <button onClick={onHomeClick}>
                 <Logo src={logoSrc} alt="Logo" className="rounded-full w-20" />
             </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            3
                 {/* <HomeButton onClick={onHomeClick} src={homeIconSrc} alt="Home" /> */}
             </div>
         </header>
