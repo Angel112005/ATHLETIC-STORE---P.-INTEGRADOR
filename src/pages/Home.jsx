@@ -1,8 +1,11 @@
+// import './index.css'
+
 import React from 'react';
 import Header from '../components/organisms/Header';
 import { useNavigate } from 'react-router-dom';
 import BoxHomeClient from '../components/organisms/BoxHomeClient';
 import BoxCatologoHome from '../components/organisms/BoxCatalogoHome';
+import HeaderClient from '../components/organisms/HeaderClient';
 
 function Home() {
     const navigate = useNavigate();
