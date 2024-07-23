@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { ProductProvider } from './context/ProductContext';
+import { WishlistProvider } from './context/WishlistContext';
 import './index.css';
  // Si tienes estilos globales
 
@@ -9,7 +10,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
   <React.StrictMode>
     <ProductProvider>
-      <App />
+      <WishlistProvider>
+        <App />
+      </WishlistProvider>
     </ProductProvider>
   </React.StrictMode>
 );
