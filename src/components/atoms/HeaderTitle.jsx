@@ -2,7 +2,7 @@ import React from 'react';
 
 function HeaderTitle({ children, className }) {
     return (
-        <h1 className={`text-2xl md:text-4xl font-bold ${className}`}>
+        <h1 className={`text-3xl md:text-4xl font-serif ${className}`}>
             {children}
         </h1>
     );

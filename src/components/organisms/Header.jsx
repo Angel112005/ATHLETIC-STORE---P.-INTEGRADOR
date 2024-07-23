@@ -19,14 +19,14 @@ function Header({ onHomeClick, logoSrc, homeIconSrc, title, isLoggedIn, onLoginC
                         <button onClick={onProfileClick} className=" rounded-full bg-white">
                             <img src="/profile.png" alt="Profile" className="w-8 h-8 md:w-14 md:h-14" />
                         </button>
-                        <Button onClick={onLogoutClick} className="bg-red-500 text-white">
+                        <Button onClick={onLogoutClick} className="py-2 px-4 bg-gray-200 rounded-lg hover:bg-neutral-900 hover:text-white bg-red-500 text-white ">
                             Cerrar Sesión
                         </Button>
                     </>
                 ) : (
                     <>
-                        <Button onClick={() => navigate('/login')} >Iniciar Sesión</Button>
-                        <Button onClick={() => navigate('/register')}>Registrarse</Button>
+                        <Button onClick={() => navigate('/login')} className='py-2 px-4 bg-gray-200 rounded-lg hover:bg-neutral-900 hover:text-white' >Iniciar Sesión</Button>
+                        <Button onClick={() => navigate('/register')} className='' >Registrarse</Button>
                     </>
                 )}
                 {/* <HomeButton onClick={onHomeClick} src={homeIconSrc} alt="Home" /> */}

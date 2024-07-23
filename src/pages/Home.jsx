@@ -23,7 +23,7 @@ function Home() {
                 // onProfileClick={handleProfileClick}
             />
             <div className="p-2  ">
-                <h2 className="text-3xl mb-2 text-center font-extrabold text-white text-6xl mt-4 mb-6">NOVEDADES</h2>
+                <h2 className="text-3xl mb-2 text-center font-serif  text-white text-6xl mt-4 mb-6 ">NOVEDADES</h2>
                 <div className="flex justify-evenly  ">
                     <div className="flex items-center border rounded-3xl p-4 bg-amber-200 w-2/3">
                         <img src="/NikeInvincible3.jpeg" alt="Nike Invincible Run 3" className="w-48 h-auto mr-8 ml-6 rounded-3xl" />
