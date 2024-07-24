@@ -65,7 +65,7 @@ function Home() {
                         <BoxCatologoHome onCatalogClick={() => navigate('/CatalogoClientes')} />
                     </div>
                 </div>
-                <h2 className="text-3xl font-serif text-center mt-6 text-4xl text-white">CATEGORÍAS</h2>
+                {/* <h2 className="text-3xl font-serif text-center mt-6 text-4xl text-white">CATEGORÍAS</h2> */}
                 <h2 className="text-3xl font-serif text-center mt-6 text-4xl text-white">CATEGORÍAS</h2>
                 <BoxHomeClient
                     onRunClick={() => navigate('/Running')}
