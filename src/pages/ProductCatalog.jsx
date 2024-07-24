@@ -57,15 +57,7 @@
 
 
 
-
-
-
-
-
-
-
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Header from '../components/organisms/Header';
 import { useProductContext } from '../context/ProductContext';
 
@@ -94,25 +86,30 @@ function ProductCatalog() {
   }, [setProducts]);
 
   useEffect(() => {
-    if (searchTerm) {
-      const fetchSearchResults = async () => {
-        try {
-          const response = await fetch(`https://athleticstoreapi.integrador.xyz/api/Productos/buscar/${searchTerm}`);
-          if (!response.ok) {
-            throw new Error('Error al buscar productos');
-          }
-          const data = await response.json();
-          setFilteredProducts(data);
-        } catch (error) {
-          console.error('Error al buscar productos:', error);
+    const fetchFilteredProducts = async () => {
+      if (searchTerm.trim() === '') {
+        setFilteredProducts(products);
+        return;
+      }
+      
+      try {
+        const response = await fetch(`https://athleticstoreapi.integrador.xyz/api/Productos/buscar/${searchTerm}`);
+        if (!response.ok) {
+          throw new Error('Error al buscar los productos');
         }
-      };
+        const data = await response.json();
+        setFilteredProducts(data);
+      } catch (error) {
+        console.error('Error al buscar los productos:', error);
+      }
+    };
 
-      fetchSearchResults();
-    } else {
-      setFilteredProducts(products);
-    }
+    fetchFilteredProducts();
   }, [searchTerm, products]);
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   return (
     <div className="min-h-screen bg-black">
@@ -122,8 +119,8 @@ function ProductCatalog() {
         className="bg-white"
         onHomeClick={() => navigate('/')}
         searchTerm={searchTerm}
-        onSearchChange={(e) => setSearchTerm(e.target.value)}
-        showSearch={true} // Solo para la vista de ProductCatalog
+        onSearchChange={handleSearchChange}
+        showSearch={true}
       />
       <div className="container mx-auto p-8">
         <div className="grid grid-cols-4 gap-4">
