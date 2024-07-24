@@ -24,8 +24,8 @@ function ProductCardAdmin({ product, onEdit }) {
   },[])
 
   return (
-    <div className="border w-72 p-4 rounded-lg shadow-2xl bg-white mt-6 mb-5 transform transition-transform duration-300 hover:scale-110">
-      <img src={`https://athleticstoreapi.integrador.xyz/${product.Imagen}`} alt={product.Nombre_modelo} className="w-full h-48 object-contain mb-2" />
+    <div className="border grid justify-center w-64 p-4 rounded-lg shadow-2xl bg-white mt-6 mb-5 transform transition-transform duration-300 hover:scale-110">
+      <img src={`https://athleticstoreapi.integrador.xyz/${product.Imagen}`} alt={product.Nombre_modelo} className=" rounded-3xl h-48 object-contain mb-2" />
       <h3 className="text-xl font-bold text-center">{product.Nombre_modelo}</h3>
       <p>${product.Precio}</p>
       <p>{product.Categoria}</p>

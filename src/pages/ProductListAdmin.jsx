@@ -85,7 +85,7 @@ function ProductListAdmin() {
       />
       <div className="container mx-auto mt-9">
         <BoxGestionAdmin onAddProductClick={() => navigate('/AgregarProducto')} />
-        <div className="border grid grid-cols-3 ">
+        <div className=" grid grid-cols-4 ">
           {products && products.map(product => (
             // <div className="border " key={product.Folio_producto}>
               <ProductCardAdmin 
