@@ -12,7 +12,7 @@ function Home() {
 
     return (
         <div className="min-h-screen  w-full overflow-hidden bg-gradient-to-r from-neutral-700 via-black to-stone-700 bg-[length:400%_400%] animate-gradient-x ">
-            <HeaderClient title='WEARING WINNERS' logoSrc='/profile.png' className='text-white ' ></HeaderClient>
+            {/* <HeaderClient title='WEARING WINNERS' logoSrc='/profile.png' className='text-white ' ></HeaderClient> */}
             <Header
                 title="ATHLETIC_STORE"
                 logoSrc="/LOGO_BLACK.jpeg"

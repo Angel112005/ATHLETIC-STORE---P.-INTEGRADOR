@@ -81,7 +81,7 @@ export default function Login() {
       <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="bg-white p-8 rounded-lg shadow-lg w-96">
           <h2 className="text-2xl mb-4 text-center">Iniciar Sesión</h2>
-          <LoginForm onSubmit={handleLogin} onCancel={() => navigate('/login')} />
+          <LoginForm onSubmit={handleLogin} onCancel={() => navigate('/')} />
         </div>
       </div>
     </div>
