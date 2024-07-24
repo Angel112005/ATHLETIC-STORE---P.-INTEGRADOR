@@ -1,19 +1,10 @@
 
 
 
-
-
 import React from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProductContext } from '../../context/ProductContext';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useProductContext } from '../../context/ProductContext';
-
-function ProductCardAdmin({ product, onEdit }) {
-  const { deleteProduct } = useProductContext();
-  const navigate = useNavigate();
 
 function ProductCardAdmin({ product, onEdit }) {
   const { deleteProduct } = useProductContext();
@@ -21,19 +12,12 @@ function ProductCardAdmin({ product, onEdit }) {
 
   const handleEdit = () => {
     onEdit(`/edit/${product.Folio_producto}`);
-    onEdit(`/edit/${product.Folio_producto}`);
   };
 
   const handleDelete = () => {
     // onDelete(product.Folio_producto);
     deleteProduct(product.Folio_producto);
-    // onDelete(product.Folio_producto);
-    deleteProduct(product.Folio_producto);
   };
-
-  useEffect(()=>{
-    console.log("Estoy recibiendo esto:", product)
-  },[])
 
   useEffect(()=>{
     console.log("Estoy recibiendo esto:", product)
@@ -47,7 +31,6 @@ function ProductCardAdmin({ product, onEdit }) {
       <p>{product.Categoria}</p>
       <p>{product.Marca}</p>
       <div className="flex justify-between mt-4">
-        <button onClick={() => navigate(`/EditarProducto/${product.Folio_producto}`)} className="bg-black text-white py-2 px-4 rounded hover:bg-yellow-500 hover:text-black rounded-lg">
         <button onClick={() => navigate(`/EditarProducto/${product.Folio_producto}`)} className="bg-black text-white py-2 px-4 rounded hover:bg-yellow-500 hover:text-black rounded-lg">
           Editar
         </button>

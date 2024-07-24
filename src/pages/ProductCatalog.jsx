@@ -57,9 +57,16 @@
 
 
 
+
+
+
+
+
+
+
 import React, { useState, useEffect } from 'react';
-import Header from '../components/organisms/Header';
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/organisms/Header';
 import { useProductContext } from '../context/ProductContext';
 
 function ProductCatalog() {
@@ -77,6 +84,7 @@ function ProductCatalog() {
         }
         const data = await response.json();
         setProducts(data);
+        setFilteredProducts(data);
       } catch (error) {
         console.error('Error al recuperar los productos:', error);
       }
@@ -86,30 +94,25 @@ function ProductCatalog() {
   }, [setProducts]);
 
   useEffect(() => {
-    const fetchFilteredProducts = async () => {
-      if (searchTerm.trim() === '') {
-        setFilteredProducts(products);
-        return;
-      }
-      
-      try {
-        const response = await fetch(`https://athleticstoreapi.integrador.xyz/api/Productos/buscar/${searchTerm}`);
-        if (!response.ok) {
-          throw new Error('Error al buscar los productos');
+    if (searchTerm) {
+      const fetchSearchResults = async () => {
+        try {
+          const response = await fetch(`https://athleticstoreapi.integrador.xyz/api/Productos/buscar/${searchTerm}`);
+          if (!response.ok) {
+            throw new Error('Error al buscar productos');
+          }
+          const data = await response.json();
+          setFilteredProducts(data);
+        } catch (error) {
+          console.error('Error al buscar productos:', error);
         }
-        const data = await response.json();
-        setFilteredProducts(data);
-      } catch (error) {
-        console.error('Error al buscar los productos:', error);
-      }
-    };
+      };
 
-    fetchFilteredProducts();
+      fetchSearchResults();
+    } else {
+      setFilteredProducts(products);
+    }
   }, [searchTerm, products]);
-
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
 
   return (
     <div className="min-h-screen bg-black">
@@ -119,8 +122,8 @@ function ProductCatalog() {
         className="bg-white"
         onHomeClick={() => navigate('/')}
         searchTerm={searchTerm}
-        onSearchChange={handleSearchChange}
-        showSearch={true}
+        onSearchChange={(e) => setSearchTerm(e.target.value)}
+        showSearch={true} // Solo para la vista de ProductCatalog
       />
       <div className="container mx-auto p-8">
         <div className="grid grid-cols-4 gap-4">
