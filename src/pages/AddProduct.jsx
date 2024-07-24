@@ -323,7 +323,7 @@ export default function AddProduct() {
         logoSrc="/LOGO_BLACK.jpeg"
         className="bg-white"
         homeIconSrc="/path/to/home_icon.png"
-        onHomeClick={() => navigate('/')}
+        onHomeClick={() => navigate('/Gestion')}
       />
       <div className="max-w-xl mx-auto p-6 bg-white rounded-md mt-8">
         <h2 className="text-2xl text-center font-bold mb-6">Agregar Producto</h2>

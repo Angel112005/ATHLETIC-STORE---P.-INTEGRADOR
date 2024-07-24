@@ -40,7 +40,7 @@ function ProductDetails(){
         title="DETALLES DEL PRODUCTO"
         logoSrc="/LOGO_BLACK.jpeg"
         className="bg-white"
-        onHomeClick={() => navigate('/')}
+        onHomeClick={() => navigate('/CatalogoClientes')}
       />
       {product && (
         <div className="container mx-auto p-8 flex">

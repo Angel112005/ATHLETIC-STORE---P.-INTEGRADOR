@@ -30,15 +30,16 @@ function Futbol() {
   return (
     <div className="min-h-screen bg-black">
       <Header 
-        title="ATHLETIC_STORE" 
+        title="ATHLETIC STORE" 
         logoSrc="/LOGO_BLACK.jpeg"
+        subtitle="FÚTBOL"
         className="bg-white"
         homeIconSrc="/path/to/home_icon.png"
         onHomeClick={()=>navigate("/")}
       />
       <div className="p-8 text-white">
-        <h2 className="text-3xl mb-4">Futbol</h2>
-        <p>Bienvenido a la categoría de Futbol. Aquí encontrarás productos ideales para el fútbol.</p>
+        {/* <h2 className="text-3xl mb-4">Futbol</h2> */}
+        {/* <p>Bienvenido a la categoría de Futbol. Aquí encontrarás productos ideales para el fútbol.</p> */}
         <div className="grid grid-cols-4 gap-4 ">
           {futbolProducts && futbolProducts.map(product => (
             <ProductCardClient key={product.Folio_producto} product={product} />

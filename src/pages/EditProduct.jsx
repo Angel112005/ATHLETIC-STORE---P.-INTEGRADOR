@@ -40,7 +40,7 @@ const EditProduct = () => {
         title="EDITAR PRODUCTO"
         logoSrc="/LOGO_BLACK.jpeg"
         className="bg-white"
-        onHomeClick={() => navigate('/')}
+        onHomeClick={() => navigate('/Gestion')}
       />
       {product && (
         <div className="container mx-auto p-8">
