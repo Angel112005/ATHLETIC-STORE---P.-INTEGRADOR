@@ -1,3 +1,5 @@
+
+
 import React, { useState } from 'react';
 import Field from '../molecules/Field';
 import Button from '../atoms/Button';
@@ -40,6 +42,7 @@ export default function AddProductForm({ onSubmit, onCancel }) {
   };
 
   return (
+    <>
     <form onSubmit={handleSubmit}>
       <Field
         type="text"
@@ -109,9 +112,7 @@ export default function AddProductForm({ onSubmit, onCancel }) {
         ]}
       />
       <div className="mb-4">
-        <Label htmlFor="imagen">
-          Imagen
-        </Label>
+        <Label text="Imagen" htmlFor="imagen" />
         <input
           type="file"
           name="imagen"
@@ -120,13 +121,10 @@ export default function AddProductForm({ onSubmit, onCancel }) {
         />
       </div>
       <div className="flex justify-between mt-6">
-        <Button type="submit" className="bg-yellow-500 text-white hover:bg-yellow-600">
-          Confirmar
-        </Button>
-        <Button onClick={onCancel} className="bg-gray-400 text-white hover:bg-gray-600">
-          Cancelar
-        </Button>
+        <Button type="submit" className="bg-yellow-500 text-white hover:bg-yellow-600">Confirmar</Button>
+        <Button type='button' onClick={onCancel} className="bg-gray-400 text-white hover:bg-gray-600">Cancelar</Button>
       </div>
     </form>
+    </>
   );
 }

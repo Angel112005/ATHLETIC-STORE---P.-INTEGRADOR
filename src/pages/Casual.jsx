@@ -31,14 +31,15 @@ function Casual() {
     <div className="min-h-screen bg-black">
       <Header 
         title="ATHLETIC_STORE" 
+        subtitle="CASUAL"
         logoSrc="/LOGO_BLACK.jpeg"
         className="bg-white"
         homeIconSrc="/path/to/home_icon.png"
         onHomeClick={()=>navigate("/")}
       />
       <div className="p-8 text-white">
-        <h2 className="text-3xl mb-4">Casual</h2>
-        <p>Bienvenido a la categoría de Casual. Aquí encontrarás productos ideales para el uso diario.</p>
+        {/* <h2 className="text-3xl mb-4">Casual</h2>
+        <p>Bienvenido a la categoría de Casual. Aquí encontrarás productos ideales para el uso diario.</p> */}
         <div className="grid grid-cols-3 gap-4 mt-10">
           {casualProducts && casualProducts.map(product => (
             <ProductCardClient key={product.Folio_producto} product={product} />

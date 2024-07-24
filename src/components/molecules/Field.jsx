@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import Label from '../atoms/Label';
 import Input from '../atoms/Input';
@@ -7,7 +9,7 @@ import TextAreaOption from '../atoms/TextAreaOption';
 export default function Field({ label, type, name, value, onChange, options, required = false, className }) {
   return (
     <div className="mb-4">
-      <Label text={label} htmlFor={name} />
+      <Label text={label} htmlFor={name} className={className}/>
       {type === 'select' ? (
         <SelectOption name={name} value={value} onChange={onChange} options={options} required={required} className={className} />
       ) : type === 'textarea' ? (

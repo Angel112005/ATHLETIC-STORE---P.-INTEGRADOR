@@ -7,7 +7,7 @@ function BoxGestionAdmin({onAddProductClick}){
                 imageSrc="/AddIcon.png"
                 alt="Imagen"
                 label="AGREGAR"
-                className="bg-white"
+                className="bg-white text-black"
                 onClick={onAddProductClick}
             ></ActionButton>
         </div>
