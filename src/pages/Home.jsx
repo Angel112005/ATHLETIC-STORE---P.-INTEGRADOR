@@ -1,8 +1,11 @@
+// import './index.css'
+
 import React from 'react';
 import Header from '../components/organisms/Header';
 import { useNavigate } from 'react-router-dom';
 import BoxHomeClient from '../components/organisms/BoxHomeClient';
-import BoxCatalogoHome from '../components/organisms/BoxCatalogoHome';
+import BoxCatologoHome from '../components/organisms/BoxCatalogoHome';
+import HeaderClient from '../components/organisms/HeaderClient';
 
 function Home() {
     const navigate = useNavigate();
@@ -30,7 +33,8 @@ function Home() {
     };
 
     return (
-        <div className="min-h-screen w-full overflow-hidden bg-gradient-to-r from-neutral-700 via-black to-stone-700 bg-[length:400%_400%] animate-gradient-x">
+        <div className="min-h-screen  w-full overflow-hidden bg-gradient-to-r from-neutral-700 via-black to-stone-700 bg-[length:400%_400%] animate-gradient-x ">
+            <HeaderClient title='WEARING WINNERS' logoSrc='/profile.png' className='text-white ' ></HeaderClient>
             <Header
                 onHomeClick={handleHomeClick}
                 logoSrc="/LOGO_BLACK.jpeg"
