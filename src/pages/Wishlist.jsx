@@ -1,13 +1,21 @@
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/organisms/Header';
 import { useWishlistContext } from '../context/WishlistContext';
+import { useAuth } from '../context/AuthContext';
 
 const Wishlist = () => {
   const { wishlist } = useWishlistContext();
   const navigate = useNavigate();
+  const { authToken, logout } = useAuth();
+  const isLoggedIn = !!authToken;
 
   const calculateTotal = () => {
     return wishlist.reduce((total, item) => total + item.Precio * item.quantity, 0);
+  };
+
+  const handleLogoutClick = () => {
+    logout();
+    navigate('/');
   };
 
   return (
@@ -17,6 +25,8 @@ const Wishlist = () => {
         logoSrc="/LOGO_BLACK.jpeg"
         className="bg-white"
         onHomeClick={() => navigate('/')}
+        isLoggedIn={isLoggedIn}
+        onLogoutClick={handleLogoutClick}
       />
       <div className="container mx-auto p-8">
         <h2 className="text-3xl mb-4 text-center font-bold text-white">Lista de Deseos</h2>

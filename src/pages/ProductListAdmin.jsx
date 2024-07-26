@@ -8,10 +8,19 @@ import Header from '../components/organisms/Header';
 import ProductCardAdmin from '../components/molecules/ProductCardAdmin';
 import BoxGestionAdmin from '../components/organisms/BoxGestionAdmin';
 import { useProductContext } from '../context/ProductContext';
+import { useAuth } from '../context/AuthContext';
 
 function ProductListAdmin() {
   const { products, setProducts, deleteProduct } = useProductContext();
   const navigate = useNavigate();
+
+  const { authToken, logout } = useAuth();
+    const isLoggedIn = !!authToken;
+
+    const handleLogoutClick = () => {
+        logout();
+        navigate('/');
+    };
 
   useEffect(() => {
     // Función para obtener productos de la API
@@ -37,7 +46,10 @@ function ProductListAdmin() {
         title="GESTIÓN ARTÍCULOS"
         logoSrc="/LOGO_BLACK.jpeg" 
         className="bg-white"
-        onHomeClick={() => navigate("/")}
+        onHomeClick={() => navigate("/HomeAdmin")}
+        isLoggedIn={isLoggedIn}
+        onLogoutClick={handleLogoutClick}
+        isAdminView={true}
       />
       <div className="container mx-auto mt-9">
         <BoxGestionAdmin onAddProductClick={() => navigate('/AgregarProducto')} />

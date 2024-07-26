@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 import Field from '../molecules/Field';
 import Button from '../atoms/Button';
@@ -10,14 +8,14 @@ export default function LoginForm({ onSubmit, onCancel }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ email, password });
+    onSubmit({ Email: email, Contraseña: password });
   };
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
       <Field
         type="email"
-        name="email"
+        name="Email"
         label="Email:"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -25,7 +23,7 @@ export default function LoginForm({ onSubmit, onCancel }) {
       />
       <Field
         type="password"
-        name="password"
+        name="Contraseña"
         label="Contraseña:"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
