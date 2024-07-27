@@ -5,12 +5,15 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/organisms/Header';
 import { useProductContext } from '../context/ProductContext';
+import { useAuth } from '../context/AuthContext';
 
 function ProductCatalog() {
   const { products, setProducts } = useProductContext();
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
   const navigate = useNavigate();
+  const { authToken, logout } = useAuth();
+  const isLoggedIn = !!authToken;
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -51,6 +54,12 @@ function ProductCatalog() {
     }
   }, [searchTerm, products]);
 
+  const handleLogoutClick = () => {
+    logout();
+    navigate('/');
+  };
+
+
   return (
     <div className="min-h-screen bg-black">
       <Header 
@@ -59,8 +68,11 @@ function ProductCatalog() {
         className="bg-white"
         onHomeClick={() => navigate('/')}
         searchTerm={searchTerm}
+        showSubmenu={true}
         onSearchChange={(e) => setSearchTerm(e.target.value)}
         showSearch={true} // Solo para la vista de ProductCatalog
+        isLoggedIn={isLoggedIn}
+        onLogoutClick={handleLogoutClick}
       />
       <div className="container mx-auto p-8">
         <div className="grid grid-cols-4 gap-4">

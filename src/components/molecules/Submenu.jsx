@@ -25,7 +25,7 @@ function Submenu() {
                         </li>
                         <li>
                             <button
-                                onClick={() => navigate('/pedidos')}
+                                onClick={() => navigate('/ordersClient')}
                                 className="block px-4 py-2 hover:bg-amber-200 hover:text-black"
                             >
                                 Pedidos

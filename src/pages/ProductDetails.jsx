@@ -46,7 +46,7 @@ function ProductDetails(){
         <div className="container mx-auto p-8 flex">
           <div className="w-1/2">
             <img src={`https://athleticstoreapi.integrador.xyz/${product.Imagen}`} alt={product.Nombre_modelo} className="w-full h-auto mb-2" />
-            <p className='text-white'> {product.Descripcion}</p>
+            
           </div>
           <div className="w-1/2 p-8 bg-white rounded-md">
             <h2 className="text-3xl font-bold">{product.Nombre_modelo}</h2>
@@ -66,6 +66,8 @@ function ProductDetails(){
                   {sizeOption}
                 </button>
               ))}
+              {/* <p>DESCRIPCION</p> */}
+              <p className='text-black font-bold'> DESCRIPCION: {product.Descripcion}</p>
             </div>
             <h3 className="mt-4">Cantidad</h3>
             <input
