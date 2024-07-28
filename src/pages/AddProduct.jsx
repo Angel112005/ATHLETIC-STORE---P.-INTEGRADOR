@@ -72,6 +72,7 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+// import Header from '../organisms/Header';
 import Header from '../components/organisms/Header';
 import AddProductForm from '../components/organisms/AddProductForm';
 import { useProductContext } from '../context/ProductContext';
