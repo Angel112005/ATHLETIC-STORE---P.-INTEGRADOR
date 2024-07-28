@@ -77,7 +77,7 @@ function ProductCatalog() {
       <div className="container mx-auto p-8">
         <div className="grid grid-cols-4 gap-4">
           {filteredProducts && filteredProducts.map(product => (
-            <div key={product.Folio_producto} onClick={() => navigate(`/product/${product.Folio_producto}`)} className="cursor-pointer grid justify-center p-4 border rounded-lg text-center bg-white hover:bg-gray-200 w-60">
+            <div key={product.Folio_producto} onClick={() => navigate(`/product/${product.Folio_producto}`)} className="cursor-pointer grid justify-center p-4 border rounded-lg text-center bg-white hover:bg-gray-300 w-60 transform transition-transform duration-300 hover:scale-110">
               <img src={`https://athleticstoreapi.integrador.xyz/${product.Imagen}`} alt={product.Nombre_modelo} className="rounded-3xl h-auto mx-auto mb-2" />
               <h3 className="text-xl font-bold">{product.Nombre_modelo}</h3>
               <p>{product.Categoria}</p>

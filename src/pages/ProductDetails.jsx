@@ -1,16 +1,25 @@
+
+
+
+
+
+
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/organisms/Header';
 import { useWishlistContext } from '../context/WishlistContext';
+import { useAuth } from '../context/AuthContext';
+import Swal from 'sweetalert2';
 
-function ProductDetails(){
+function ProductDetails() {
   const { id } = useParams(); // Obtener el ID del producto desde la URL
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState(null);
   const navigate = useNavigate();
   const { addToWishlist } = useWishlistContext();
+  const { authToken, logout } = useAuth();
+  const isLoggedIn = !!authToken;
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -30,23 +39,54 @@ function ProductDetails(){
   }, [id]);
 
   const handleAddToWishlist = () => {
+    if (!authToken) {
+      Swal.fire({
+        title: 'Debe iniciar sesión',
+        text: 'Por favor inicie sesión para agregar productos a su lista de deseos.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Iniciar Sesión',
+        cancelButtonText: 'Cancelar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/login');
+        }
+      });
+      return;
+    }
+    if (!size) {
+      Swal.fire({
+        title: 'Seleccione una talla',
+        text: 'Por favor seleccione una talla antes de agregar el producto a la lista de deseos.',
+        icon: 'warning',
+        confirmButtonText: 'Entendido'
+      });
+      return;
+    }
     addToWishlist(product, size, quantity);
     navigate('/wishlist'); // Navegar a la página de la lista de deseos después de agregar
   };
 
+  const handleLogoutClick = () => {
+    logout();
+    navigate('/');
+  };  
+
   return (
-    <div className="min-h-screen  bg-black">
+    <div className="min-h-screen bg-black">
       <Header
         title="DETALLES DEL PRODUCTO"
         logoSrc="/LOGO_BLACK.jpeg"
         className="bg-white"
+        showSubmenu={true}
         onHomeClick={() => navigate('/CatalogoClientes')}
+        isLoggedIn={isLoggedIn}
+        onLogoutClick={handleLogoutClick}
       />
       {product && (
         <div className="container mx-auto p-8 flex">
           <div className="w-1/2">
             <img src={`https://athleticstoreapi.integrador.xyz/${product.Imagen}`} alt={product.Nombre_modelo} className="w-full h-auto mb-2" />
-            
           </div>
           <div className="w-1/2 p-8 bg-white rounded-md">
             <h2 className="text-3xl font-bold">{product.Nombre_modelo}</h2>
@@ -66,7 +106,6 @@ function ProductDetails(){
                   {sizeOption}
                 </button>
               ))}
-              {/* <p>DESCRIPCION</p> */}
               <p className='text-black font-bold'> DESCRIPCION: {product.Descripcion}</p>
             </div>
             <h3 className="mt-4">Cantidad</h3>
