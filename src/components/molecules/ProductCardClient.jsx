@@ -1,10 +1,13 @@
 
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCardClient = ({ product }) => {
+    const navigate = useNavigate();
+
     return (
-        <div className="border grid justify-center p-4 rounded-lg bg-white text-black w-64">
+        <div className="border grid justify-center p-4 rounded-lg bg-white hover:bg-gray-300 text-black w-64 transform transition-transform duration-300 hover:scale-110" onClick={() => navigate(`/product/${product.Folio_producto}`)}>
             {product.Imagen && (
                 <img src={`https://athleticstoreapi.integrador.xyz/${product.Imagen}`} alt={product.Nombre_modelo} className="rounded-3xl h-48 object-contain mb-2" />
             )}
