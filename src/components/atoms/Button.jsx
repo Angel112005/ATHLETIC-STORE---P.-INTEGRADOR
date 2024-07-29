@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 
 function Button({ onClick, type = 'button', children, className }) {
@@ -11,5 +10,3 @@ function Button({ onClick, type = 'button', children, className }) {
 }
 
 export default Button;
-
-

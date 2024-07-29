@@ -1,7 +1,4 @@
 
-
-
-// src/pages/ProductListAdmin.jsx
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/organisms/Header';
