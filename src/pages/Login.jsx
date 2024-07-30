@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -22,27 +23,22 @@ export default function Login() {
       if (response.ok) {
         const data = await response.json();
         const token = response.headers.get('Authorization');
-        console.log('Estoy recibiendo este token:', token)
-        console.log(data)
+        console.log('Estoy recibiendo este token:', token);
+        console.log(data);
 
         if (token) {
-          // Almacena el token y el clientId en el contexto
-          login(token, data.id);
-          console.log('El ID del cliente es:', data.id)
+          login(token, data.id, data.rol); // Asegúrate de pasar el rol aquí
+          console.log('El ID del cliente es:', data.id);
+
+          if (data.rol === 1) {
+            navigate('/HomeAdmin');
+          } else if (data.rol === 2) {
+            navigate('/');
+          } else {
+            console.error('Rol no reconocido');
+          }
         } else {
           console.error('No se recibió el token de autenticación');
-          return;
-        }
-
-        const { rol } = data;
-
-        // Redirige según el rol
-        if (rol === 1) {
-          navigate('/HomeAdmin');
-        } else if (rol === 2) {
-          navigate('/');
-        } else {
-          console.error('Rol no reconocido');
         }
       } else {
         const errorData = await response.json();

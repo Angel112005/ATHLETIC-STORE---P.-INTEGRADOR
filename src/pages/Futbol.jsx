@@ -50,10 +50,8 @@ function Futbol() {
         isLoggedIn={isLoggedIn}
         onLogoutClick={handleLogoutClick}
       />
-      <div className="p-8 text-white">
-        {/* <h2 className="text-3xl mb-4">Futbol</h2> */}
-        {/* <p>Bienvenido a la categoría de Futbol. Aquí encontrarás productos ideales para el fútbol.</p> */}
-        <div className="grid grid-cols-4 gap-4 ">
+      <div className="p-8 text-white flex justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {futbolProducts && futbolProducts.map(product => (
             <ProductCardClient key={product.Folio_producto} product={product} />
           ))}

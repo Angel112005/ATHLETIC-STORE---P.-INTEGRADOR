@@ -38,32 +38,30 @@ function ProductListAdmin() {
   }, [setProducts]);
 
   return (
-    <div className='min-h-screen bg-black'>
-      <Header 
-        title="GESTIÓN ARTÍCULOS"
-        logoSrc="/LOGO_BLACK.jpeg" 
-        className="bg-white"
-        onHomeClick={() => navigate("/HomeAdmin")}
-        isLoggedIn={isLoggedIn}
-        onLogoutClick={handleLogoutClick}
-        isAdminView={true}
-      />
-      <div className="container mx-auto mt-9">
-        <BoxGestionAdmin onAddProductClick={() => navigate('/AgregarProducto')} />
-        <div className=" grid grid-cols-4 ">
-          {products && products.map(product => (
-            // <div className="border " key={product.Folio_producto}>
-              <ProductCardAdmin 
-                key={product.Folio_producto} 
-                product={product} 
-                onEdit={() => navigate(`/edit/${product.Folio_producto}`)} 
-                onDelete={() => deleteProduct(product.Folio_producto)} 
-              />
-            // </div>
-          ))}
-        </div>
+    <div className="min-h-screen bg-black">
+    <Header 
+      title="GESTIÓN ARTÍCULOS"
+      logoSrc="/LOGO_BLACK.jpeg" 
+      className="bg-white"
+      onHomeClick={() => navigate("/HomeAdmin")}
+      isLoggedIn={isLoggedIn}
+      onLogoutClick={handleLogoutClick}
+      isAdminView={true}
+    />
+    <div className="container mx-auto p-4 sm:p-6 md:p-8 flex flex-col items-center">
+      <BoxGestionAdmin onAddProductClick={() => navigate('/AgregarProducto')} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+        {products && products.map(product => (
+          <ProductCardAdmin 
+            key={product.Folio_producto} 
+            product={product} 
+            onEdit={() => navigate(`/edit/${product.Folio_producto}`)} 
+            onDelete={() => deleteProduct(product.Folio_producto)} 
+          />
+        ))}
       </div>
     </div>
+  </div>
   );
 }
 

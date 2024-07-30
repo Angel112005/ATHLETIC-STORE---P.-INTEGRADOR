@@ -60,22 +60,23 @@ const PedidosRealizadosADMIN = () => {
 
   return (
     <div className="min-h-screen bg-black">
-      <Header
-        title="PEDIDOS REALIZADOS"
-        logoSrc="/LOGO_BLACK.jpeg"
-        className="bg-white"
-        onHomeClick={() => navigate('/HomeAdmin')}
-        isLoggedIn={isLoggedIn}
-        onLogoutClick={handleLogoutClick}
-        isAdminView={true}
-      />
-      <div className="container mx-auto p-8">
-        {orders.map(order => (
-          <div key={order.Id_Pedido} className="bg-white p-4 rounded-lg shadow-lg mb-4">
-            <h3 className="text-xl font-bold">Pedido ID: {order.Id_Pedido}</h3>
-            <p>Fecha: {order.Fecha}</p>
-            <p>Total: ${order.Total}</p>
-            <p>Estatus: {order.Estatus}</p>
+    <Header
+      title="PEDIDOS REALIZADOS"
+      logoSrc="/LOGO_BLACK.jpeg"
+      className="bg-white"
+      onHomeClick={() => navigate('/HomeAdmin')}
+      isLoggedIn={isLoggedIn}
+      onLogoutClick={handleLogoutClick}
+      isAdminView={true}
+    />
+    <div className="container mx-auto p-4 sm:p-6 md:p-8">
+      {orders.map(order => (
+        <div key={order.Id_Pedido} className="bg-white p-4 rounded-lg shadow-lg mb-4">
+          <h3 className="text-xl font-bold">Pedido ID: {order.Id_Pedido}</h3>
+          <p>Fecha: {order.Fecha}</p>
+          <p>Total: ${order.Total}</p>
+          <p>Estatus: {order.Estatus}</p>
+          <div className="overflow-x-auto">
             <table className="w-full text-left mt-4">
               <thead>
                 <tr>
@@ -99,9 +100,10 @@ const PedidosRealizadosADMIN = () => {
               </tbody>
             </table>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
+  </div>
   );
 };
 

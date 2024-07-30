@@ -2,7 +2,7 @@ import ActionButton from "../molecules/ActionButton";
 
 function BoxHomeAdmin({ onPedidosClick, onVentasClick, onGestionClick }) {
   return (
-    <div className="flex justify-around mt-9 border-slate-950 font-bold text-2xl ">
+    <div className="flex flex-col md:flex-row justify-around mt-9 border-slate-950 font-bold text-2xl space-y-4 md:space-y-0">
       <ActionButton
         imageSrc="/pedidosColor.png"
         label="GESTIÓN PEDIDOS"

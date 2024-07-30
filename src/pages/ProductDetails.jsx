@@ -100,59 +100,61 @@ function ProductDetails() {
   };
 
   return (
-    <div className="min-h-screen bg-black">
-      <Header
-        title="DETALLES DEL PRODUCTO"
-        logoSrc="/LOGO_BLACK.jpeg"
-        className="bg-white"
-        showSubmenu={true}
-        onHomeClick={() => navigate('/CatalogoClientes')}
-        isLoggedIn={isLoggedIn}
-        onLogoutClick={handleLogoutClick}
-      />
-      {product && (
-        <div className="container mx-auto p-8 flex">
-          <div className="w-1/2">
-            <img src={`https://athleticstoreapi.integrador.xyz/${product.Imagen}`} alt={product.Nombre_modelo} className="w-full h-auto mb-2" />
-          </div>
-          <div className="w-1/2 p-8 bg-white rounded-md">
-            <h2 className="text-3xl font-bold">{product.Nombre_modelo}</h2>
-            <p>Color: {product.Color}</p>
-            <p className="text-2xl text-green-600">${product.Precio}</p>
-            <p>Categoría: {product.Categoria}</p>
-            <p>Marca: {product.Marca}</p>
-            <p>Género: {product.Genero}</p>
-            <h3 className="mt-4">Tallas (Centímetros)</h3>
-            <div className="grid grid-cols-4 gap-2 mt-2">
-              {[22, 22.5, 23, 23.5, 24, 24.5, 25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29, 29.5].map(sizeOption => (
-                <button
-                  key={sizeOption}
-                  className={`border p-2 ${size === sizeOption ? 'bg-yellow-500' : 'bg-white'}`}
-                  onClick={() => setSize(sizeOption)}
-                >
-                  {sizeOption}
-                </button>
-              ))}
-              <p className='text-black font-bold'> DESCRIPCION: {product.Descripcion}</p>
-            </div>
-            <h3 className="mt-4">Cantidad</h3>
-            <input
-              type="number"
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
-              className="border p-2 w-20"
-              min="1"
-            />
-            <button
-              onClick={handleAddToWishlist}
-              className="bg-yellow-500 text-white py-2 px-4 rounded mt-4"
-            >
-              Agregar a la lista de deseos
-            </button>
-          </div>
+  <div className="min-h-screen bg-black ">
+    <Header
+      title="DETALLES DEL PRODUCTO"
+      logoSrc="/LOGO_BLACK.jpeg"
+      className="bg-white text-center"
+      showSubmenu={true}
+      onHomeClick={() => navigate('/CatalogoClientes')}
+      isLoggedIn={isLoggedIn}
+      onLogoutClick={handleLogoutClick}
+    />
+    {product && (
+      <div className="container mx-auto p-8 flex flex-col lg:flex-row">
+        <div className="w-full lg:w-1/2 mb-4 lg:mb-0">
+          <img src={`https://athleticstoreapi.integrador.xyz/${product.Imagen}`} alt={product.Nombre_modelo} className="w-full h-auto mb-2" />
         </div>
-      )}
-    </div>
+        <div className="w-full lg:w-1/2 p-8 bg-white rounded-md">
+          <h2 className="text-3xl font-bold">{product.Nombre_modelo}</h2>
+          <p>Color: {product.Color}</p>
+          <p className="text-2xl text-green-600">${product.Precio}</p>
+          <p>Categoría: {product.Categoria}</p>
+          <p>Marca: {product.Marca}</p>
+          <p>Género: {product.Genero}</p>
+          <h3 className="mt-4">Tallas (Centímetros)</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2">
+            {[22, 22.5, 23, 23.5, 24, 24.5, 25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29, 29.5].map(sizeOption => (
+              <button
+                key={sizeOption}
+                className={`border p-2 ${size === sizeOption ? 'bg-yellow-500' : 'bg-white'}`}
+                onClick={() => setSize(sizeOption)}
+              >
+                {sizeOption}
+              </button>
+            ))}
+          </div>
+          <br />
+          <p className='text-black text-justify'><strong>Descripción:</strong> {product.Descripcion}</p>
+          <h3 className="mt-4">Cantidad</h3>
+          <input
+            type="number"
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+            className="border p-2 w-20"
+            min="1"
+          />
+          <button
+            onClick={handleAddToWishlist}
+            className="bg-yellow-500 text-white py-2 px-4 rounded mt-4"
+          >
+            Agregar a la lista de deseos
+          </button>
+        </div>
+      </div>
+    )}
+  </div>
+
   );
 };
 
