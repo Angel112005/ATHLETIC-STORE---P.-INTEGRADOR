@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/organisms/Header';
 import { useAuth } from '../context/AuthContext';
 import Modal from 'react-modal';
 
-Modal.setAppElement('#root'); // Asegura que React Modal funcione correctamente
+Modal.setAppElement('#root'); 
 
 const PedidosAdmin = () => {
   const [orders, setOrders] = useState([]);
@@ -28,7 +29,6 @@ const PedidosAdmin = () => {
         if (response.ok) {
           const data = await response.json();
           
-          // Fetch order details for each order
           const orderDetailsPromises = data.map(order =>
             fetch(`https://athleticstoreapi.integrador.xyz/api/Detalle_pedidos`, {
               method: 'GET',
@@ -120,6 +120,9 @@ const PedidosAdmin = () => {
 
   return (
     <div className="min-h-screen bg-black">
+            <Helmet>
+            <title>GESTIÓN PEDIDOS</title>
+            </Helmet>
     <Header
       title="GESTIÓN PEDIDOS"
       logoSrc="/LOGO_BLACK.jpeg"
@@ -162,8 +165,8 @@ const PedidosAdmin = () => {
             </table>
           </div>
           <div className="flex flex-col sm:flex-row justify-end mt-4">
-            <button onClick={() => handleAcceptOrder(order)} className="bg-green-500 text-white py-2 px-4 rounded mb-2 sm:mb-0 sm:mr-2 hover:bg-green-600">Aceptar</button>
-            <button onClick={() => handleRejectOrder(order.Id_Pedido)} className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">Rechazar</button>
+            <button onClick={() => handleAcceptOrder(order)} className=" bg-black text-white rounded hover:bg-yellow-500 hover:text-black  py-2 px-4 rounded mb-2 sm:mb-0 sm:mr-2">Aceptar</button>
+            <button onClick={() => handleRejectOrder(order.Id_Pedido)} className="bg-gray-400 text-white  hover:bg-gray-600 py-2 px-4 rounded ">Rechazar</button>
           </div>
         </div>
       ))}

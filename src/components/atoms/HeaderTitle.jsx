@@ -1,4 +1,3 @@
-import React from 'react';
 
 function HeaderTitle({ children, className }) {
     return (

@@ -1,5 +1,4 @@
-
-import React from 'react';
+import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Header from '../components/organisms/Header';
@@ -13,11 +12,14 @@ function HomeAdmin() {
 
     const handleLogout = () => {
         logout();
-        navigate('/'); // Redirigir al home o login
+        navigate('/'); 
     };
 
     return (
         <div className='min-h-screen bg-black'>
+                  <Helmet>
+                    <title>INICIO-ADMIN</title>
+                </Helmet>
             <Header 
                 title="ATHLETIC_STORE" 
                 logoSrc="/LOGO_BLACK.jpeg"

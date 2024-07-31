@@ -1,7 +1,5 @@
-
-import React from 'react';
+import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
-// import Header from '../organisms/Header';
 import Header from '../components/organisms/Header';
 import AddProductForm from '../components/organisms/AddProductForm';
 import { useProductContext } from '../context/ProductContext';
@@ -27,7 +25,6 @@ export default function AddProduct() {
 
     try {
       console.log('Sending token:', authToken);
-      // const token = localStorage.getItem('authToken');
       const response = await fetch('https://athleticstoreapi.integrador.xyz/api/Productos', {
         method: 'POST',
         headers: {
@@ -62,6 +59,9 @@ export default function AddProduct() {
 
   return (
     <div className='min-h-screen bg-black'>
+      <Helmet>
+        <title>PRODUCTOS</title>
+      </Helmet>
       <Header
         title="AGREGAR PRODUCTO"
         logoSrc="/LOGO_BLACK.jpeg"

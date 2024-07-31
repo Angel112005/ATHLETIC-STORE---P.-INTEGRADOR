@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../atoms/Logo';
 import HeaderTitle from '../atoms/HeaderTitle';
@@ -36,7 +35,7 @@ function Header({ onHomeClick, logoSrc, title, subtitle, isLoggedIn, onLogoutCli
                 ) : (
                     <Button
                         onClick={onLogoutClick}
-                        className="py-2 px-4 bg-gray-200 rounded-lg hover:bg-neutral-900 hover:text-white bg-red-500 text-white"
+                        className="py-2 px-4 rounded-lg hover:bg-neutral-400 hover:text-black bg-black text-white"
                     >
                         Cerrar Sesión
                     </Button>

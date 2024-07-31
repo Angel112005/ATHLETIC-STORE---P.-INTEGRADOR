@@ -1,11 +1,13 @@
-
-import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/organisms/Header';
 import { useAuth } from '../context/AuthContext';
 import Modal from 'react-modal';
+import Swal from 'sweetalert2';
+import { Result } from 'postcss';
 
-Modal.setAppElement('#root'); // Asegura que React Modal funcione correctamente
+Modal.setAppElement('#root'); 
 
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -47,8 +49,17 @@ const Wishlist = () => {
   };
 
   const handleLogoutClick = () => {
-    logout();
-    navigate('/');
+    Swal.fire({
+      title : '¿Estás seguro de cerrar sesión?',
+      showCancelButton: true,
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    }).then((Result) => {
+      if(Result.isConfirmed){
+        logout();
+        navigate('/');
+      }
+    })
   };
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -113,7 +124,7 @@ const Wishlist = () => {
   };
 
   const handleRemove = async (wishId) => {
-    console.log('Eliminando el item con Id_Wish:', wishId); // Depuración
+    console.log('Eliminando el item con Id_Wish:', wishId); 
     try {
       const response = await fetch(`https://athleticstoreapi.integrador.xyz/api/wishlist/${wishId}`, {
         method: 'DELETE',
@@ -156,8 +167,20 @@ const Wishlist = () => {
 
       if (response.ok) {
         const pedidoData = await response.json();
-
-        // Crear detalle de pedidos
+        Swal.fire({
+          title : '¿Estás seguro de realizar el pedido?',
+          showCancelButton: true,
+          confirmButtonText: 'Aceptar',
+          cancelButtonText: 'Cancelar'
+        }).then((Result) => {
+          if(Result.isConfirmed){
+            Swal.fire({
+              icon: 'success',
+              title: 'Pedido realizado'
+            })
+            navigate('/ordersClient');
+          }
+        })
         await Promise.all(
           wishlist.map(async (item) => {
             const detalleResponse = await fetch('https://athleticstoreapi.integrador.xyz/api/Detalle_pedidos', {
@@ -183,9 +206,6 @@ const Wishlist = () => {
             }
           })
         );
-
-        // Redirigir a la vista de pedidos del cliente
-        navigate('/ordersClient');
       } else {
         const errorData = await response.json();
         console.error('Error al crear el pedido:', errorData);
@@ -197,6 +217,9 @@ const Wishlist = () => {
 
   return (
   <div className="min-h-screen bg-black">
+          <Helmet>
+          <title>WISHLIST</title>
+          </Helmet>
     <Header
       title="LISTA DE DESEOS"
       logoSrc="/LOGO_BLACK.jpeg"

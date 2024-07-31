@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
+import { useEffect, useState } from 'react';
 import Header from '../components/organisms/Header';
 import { useNavigate } from 'react-router-dom';
 import { useProductContext } from '../context/ProductContext';
@@ -37,6 +38,9 @@ function Casual() {
 
   return (
     <div className="min-h-screen bg-black">
+            <Helmet>
+          <title>CATEGORÍA CASUAL</title>
+          </Helmet>
       <Header 
         title="ATHLETIC_STORE" 
         subtitle="CASUAL"

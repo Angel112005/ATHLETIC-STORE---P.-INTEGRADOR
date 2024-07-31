@@ -1,5 +1,5 @@
-
-import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/organisms/Header';
 import ProductCardAdmin from '../components/molecules/ProductCardAdmin';
@@ -20,7 +20,6 @@ function ProductListAdmin() {
     };
 
   useEffect(() => {
-    // Función para obtener productos de la API
     const fetchProducts = async () => {
       try {
         const response = await fetch('https://athleticstoreapi.integrador.xyz/api/Productos');
@@ -39,6 +38,9 @@ function ProductListAdmin() {
 
   return (
     <div className="min-h-screen bg-black">
+            <Helmet>
+            <title>GESTIÓN ARTÍCULOS</title>
+            </Helmet>
     <Header 
       title="GESTIÓN ARTÍCULOS"
       logoSrc="/LOGO_BLACK.jpeg" 
