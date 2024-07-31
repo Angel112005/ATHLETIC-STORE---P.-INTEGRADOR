@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Header from '../components/organisms/Header';
 import LoginForm from '../components/organisms/LoginForm';
+import Swal from 'sweetalert2';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -23,17 +24,21 @@ export default function Login() {
       if (response.ok) {
         const data = await response.json();
         const token = response.headers.get('Authorization');
-        console.log('Estoy recibiendo este token:', token);
-        console.log(data);
-
         if (token) {
           login(token, data.id, data.rol); // Asegúrate de pasar el rol aquí
-          console.log('El ID del cliente es:', data.id);
-
           if (data.rol === 1) {
             navigate('/HomeAdmin');
+            Swal.fire({
+              icon : "success",
+              title : "Inicio de sesión exitoso"
+            })
           } else if (data.rol === 2) {
             navigate('/');
+            navigate('/HomeAdmin');
+            Swal.fire({
+              icon : "success",
+              title : "Inicio de sesión exitoso"
+            })
           } else {
             console.error('Rol no reconocido');
           }
@@ -42,10 +47,27 @@ export default function Login() {
         }
       } else {
         const errorData = await response.json();
-        console.error('Error en el inicio de sesión:', errorData);
+        if (errorData.message === "Contraseña incorrecta") {
+          Swal.fire({
+            icon : "error",
+            title : "Error al autenticarse",
+            text : "Contraseña ingresada incorrecta"
+          })
+        } else if(errorData.message === "Usuario no encontrado") {
+          Swal.fire({
+            icon : "error",
+            title : "Error al autenticarse",
+            text : "Usuario ingresado no encontrado"
+          })
+        }
       }
     } catch (error) {
-      console.error('Error en el inicio de sesión:', error);
+      if(error) {
+        Swal.fire({
+            icon : "error",
+            title : "Error del sistema"
+        })
+      }
     }
   };
 

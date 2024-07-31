@@ -3,13 +3,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import RegisterForm from '../components/organisms/RegisterForm';
 import Header from '../components/organisms/Header';
+import Swal from 'sweetalert2';
 
 export default function Register() {
   const navigate = useNavigate();
 
   const handleRegister = async (formData) => {
     const dataWithRole = { ...formData, Id_Rol: 2 }; // Asigna el rol de cliente (Id_Rol = 2)
-    console.log('Datos enviados:', dataWithRole); // Imprime los datos para verificar
     try {
       const response = await fetch('https://athleticstoreapi.integrador.xyz/api/Clientes/register', {
         method: 'POST',
@@ -21,10 +21,17 @@ export default function Register() {
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.error('Error en el registro:', errorData);
+        if(errorData.errno === 1062) {
+          Swal.fire({
+            icon : "error",
+            title : "Email ya registrado"
+          })
+        }
       } else {
-        const data = await response.json();
-        console.log('Registro exitoso:', data);
+        Swal.fire({
+          icon : "success",
+          title : "Registro exitoso",
+        })
         navigate('/login'); // Redirigir al login después del registro exitoso
       }
     } catch (error) {
