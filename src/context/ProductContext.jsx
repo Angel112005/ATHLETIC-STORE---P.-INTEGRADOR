@@ -1,6 +1,5 @@
-
-
 import React, { createContext, useState, useContext } from 'react';
+import { useAuth } from './AuthContext';
 
 const ProductContext = createContext();
 
@@ -20,6 +19,7 @@ export const ProductProvider = ({ children }) => {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization':  localStorage.getItem('authToken'),
                 },
                 body: JSON.stringify(updatedProduct),
             });
@@ -40,6 +40,10 @@ export const ProductProvider = ({ children }) => {
         try {
             const response = await fetch(`https://athleticstoreapi.integrador.xyz/api/Productos/${productId}`, {
                 method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization':  localStorage.getItem('authToken'),
+                }
             });
             if (!response.ok) {
                 throw new Error('Error al eliminar el producto');

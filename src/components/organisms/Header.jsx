@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../atoms/Logo';
@@ -6,11 +5,11 @@ import HeaderTitle from '../atoms/HeaderTitle';
 import Button from '../atoms/Button';
 import Submenu from '../molecules/Submenu';
 
-function Header({ onHomeClick, logoSrc, title, subtitle, isLoggedIn, onLogoutClick, className, searchTerm, onSearchChange, showSearch }) {
+function Header({ onHomeClick, logoSrc, title, subtitle, isLoggedIn, onLogoutClick, className, searchTerm, onSearchChange, showSearch, showSubmenu, isAdminView }) {
     const navigate = useNavigate();
 
     return (
-        <header className={`flex justify-between items-center py-4 px-4 md:px-8 ${className}`}>
+        <header className={`flex flex-col md:flex-row justify-between items-center py-4 md:py-8 px-4 md:px-8 ${className}`}>
             <button onClick={onHomeClick}>
                 <Logo src={logoSrc} alt="Logo" className="rounded-full w-20" />
             </button>
@@ -28,11 +27,13 @@ function Header({ onHomeClick, logoSrc, title, subtitle, isLoggedIn, onLogoutCli
                         className="py-2 px-4 border rounded-lg"
                     />
                 )}
-                <button onClick={() => navigate('/login')} className="rounded-full bg-white">
-                    <img src="/profile.png" alt="Profile" className="w-8 h-8 md:w-14 md:h-14" />
-                </button>
-                <Submenu />
-                {isLoggedIn && (
+                {!isLoggedIn ? (
+                    !isAdminView && (
+                        <button onClick={() => navigate('/login')} className="rounded-full bg-white">
+                            <img src="/profile.png" alt="Profile" className="w-8 h-8 md:w-14 md:h-14" />
+                        </button>
+                    )
+                ) : (
                     <Button
                         onClick={onLogoutClick}
                         className="py-2 px-4 bg-gray-200 rounded-lg hover:bg-neutral-900 hover:text-white bg-red-500 text-white"
@@ -40,6 +41,7 @@ function Header({ onHomeClick, logoSrc, title, subtitle, isLoggedIn, onLogoutCli
                         Cerrar Sesión
                     </Button>
                 )}
+                {showSubmenu && <Submenu />}
             </div>
         </header>
     );

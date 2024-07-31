@@ -1,3 +1,6 @@
+
+
+
 import React, { createContext, useState, useContext } from 'react';
 
 const WishlistContext = createContext();
@@ -12,8 +15,20 @@ export const WishlistProvider = ({ children }) => {
     setWishlist(prevWishlist => [...prevWishlist, newWishlistItem]);
   };
 
+  const updateWishlistItem = (updatedItem) => {
+    setWishlist(prevWishlist =>
+      prevWishlist.map(item =>
+        item.Folio_producto === updatedItem.Folio_producto ? updatedItem : item
+      )
+    );
+  };
+
+  const removeFromWishlist = (productId) => {
+    setWishlist(prevWishlist => prevWishlist.filter(item => item.Folio_producto !== productId));
+  };
+
   return (
-    <WishlistContext.Provider value={{ wishlist, addToWishlist }}>
+    <WishlistContext.Provider value={{ wishlist, addToWishlist, updateWishlistItem, removeFromWishlist }}>
       {children}
     </WishlistContext.Provider>
   );

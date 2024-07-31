@@ -1,16 +1,15 @@
 
-
-
 import React, { useState } from 'react';
 import Field from '../molecules/Field';
 import Button from '../atoms/Button';
 
 export default function RegisterForm({ onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    phone: '',
-    email: ''
+    Nombres: '',
+    Apellidos: '',
+    Telefono: '',
+    Email: '',
+    Contraseña: ''
   });
 
   const handleChange = (e) => {
@@ -30,33 +29,41 @@ export default function RegisterForm({ onSubmit, onCancel }) {
     <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
       <Field
         type="text"
-        name="firstName"
+        name="Nombres"
         label="Nombre(s):"
-        value={formData.firstName}
+        value={formData.Nombres}
         onChange={handleChange}
         required
       />
       <Field
         type="text"
-        name="lastName"
+        name="Apellidos"
         label="Apellidos:"
-        value={formData.lastName}
+        value={formData.Apellidos}
         onChange={handleChange}
         required
       />
       <Field
         type="tel"
-        name="phone"
+        name="Telefono"
         label="Teléfono:"
-        value={formData.phone}
+        value={formData.Telefono}
         onChange={handleChange}
         required
       />
       <Field
         type="email"
-        name="email"
+        name="Email"
         label="E-mail:"
-        value={formData.email}
+        value={formData.Email}
+        onChange={handleChange}
+        required
+      />
+      <Field
+        type="password"
+        name="Contraseña"
+        label="Contraseña:"
+        value={formData.Contraseña}
         onChange={handleChange}
         required
       />

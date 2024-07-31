@@ -1,31 +1,36 @@
 
-
-
 import React from 'react';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useProductContext } from '../../context/ProductContext';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
-function ProductCardAdmin({ product, onEdit }) {
+function ProductCardAdmin({ product }) {
   const { deleteProduct } = useProductContext();
   const navigate = useNavigate();
 
-  const handleEdit = () => {
-    onEdit(`/edit/${product.Folio_producto}`);
-  };
-
   const handleDelete = () => {
-    // onDelete(product.Folio_producto);
-    deleteProduct(product.Folio_producto);
+    Swal.fire({
+      title: '¿Está seguro de eliminar este producto?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteProduct(product.Folio_producto);
+        Swal.fire(
+          '¡Eliminado!',
+          'El producto ha sido eliminado.',
+          'success'
+        );
+      }
+    });
   };
-
-  useEffect(()=>{
-    console.log("Estoy recibiendo esto:", product)
-  },[])
 
   return (
     <div className="border grid justify-center w-64 p-4 rounded-lg shadow-2xl bg-white mt-6 mb-5 transform transition-transform duration-300 hover:scale-110">
-      <img src={`https://athleticstoreapi.integrador.xyz/${product.Imagen}`} alt={product.Nombre_modelo} className=" rounded-3xl h-48 object-contain mb-2" />
+      <img src={`https://athleticstoreapi.integrador.xyz/${product.Imagen}`} alt={product.Nombre_modelo} className="rounded-3xl h-48 object-contain mb-2" />
       <h3 className="text-xl font-bold text-center">{product.Nombre_modelo}</h3>
       <p>${product.Precio}</p>
       <p>{product.Categoria}</p>
