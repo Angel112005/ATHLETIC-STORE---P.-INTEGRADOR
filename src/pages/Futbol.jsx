@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
+import { useEffect, useState } from 'react';
 import Header from '../components/organisms/Header';
 import { useNavigate } from 'react-router-dom';
 import { useProductContext } from '../context/ProductContext';
@@ -39,6 +40,9 @@ function Futbol() {
 
   return (
     <div className="min-h-screen bg-black">
+            <Helmet>
+          <title>CATEGORÍA FÚTBOL</title>
+            </Helmet>
       <Header 
         title="ATHLETIC STORE" 
         logoSrc="/LOGO_BLACK.jpeg"

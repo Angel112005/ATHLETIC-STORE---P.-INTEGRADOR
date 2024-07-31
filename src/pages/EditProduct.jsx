@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/organisms/Header';
 import { useProductContext } from '../context/ProductContext';
@@ -36,6 +37,9 @@ const EditProduct = () => {
 
   return (
   <div className='min-h-screen bg-black'>
+          <Helmet>
+          <title>PRODUCTOS</title>
+          </Helmet>
     <Header
       title="EDITAR PRODUCTO"
       logoSrc="/LOGO_BLACK.jpeg"

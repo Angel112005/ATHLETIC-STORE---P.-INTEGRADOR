@@ -4,7 +4,6 @@ import App from './App';
 import { ProductProvider } from './context/ProductContext';
 import { WishlistProvider } from './context/WishlistContext';
 import './index.css';
- // Si tienes estilos globales
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 

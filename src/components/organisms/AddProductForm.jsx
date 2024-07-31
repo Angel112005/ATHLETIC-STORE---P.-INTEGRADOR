@@ -1,6 +1,6 @@
 
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Field from '../molecules/Field';
 import Button from '../atoms/Button';
 import Label from '../atoms/Label';
@@ -21,7 +21,6 @@ export default function AddProductForm({ onSubmit, onCancel }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Prevent negative price
     if (name === 'precio' && value < 0) {
         return;
       }

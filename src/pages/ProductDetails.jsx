@@ -1,5 +1,5 @@
-
-import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/organisms/Header';
 import { useWishlistContext } from '../context/WishlistContext';
@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import Swal from 'sweetalert2';
 
 function ProductDetails() {
-  const { id } = useParams(); // Obtener el ID del producto desde la URL
+  const { id } = useParams(); 
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState(null);
@@ -59,9 +59,9 @@ function ProductDetails() {
       return;
     }
 
-    console.log('Producto:', product); // Verifica el valor del producto
-    console.log('Producto ID:', product.Folio_producto); // Verifica el ID del producto
-    console.log('Cliente ID:', clientId); // Verifica el ID del cliente
+    console.log('Producto:', product); 
+    console.log('Producto ID:', product.Folio_producto); 
+    console.log('Cliente ID:', clientId); 
 
     try {
       const response = await fetch('https://athleticstoreapi.integrador.xyz/api/wishlist', {
@@ -100,6 +100,9 @@ function ProductDetails() {
 
   return (
   <div className="min-h-screen bg-black ">
+          <Helmet>
+            <title>DETALLES DE PRODUCTO</title>
+          </Helmet>
     <Header
       title="DETALLES DEL PRODUCTO"
       logoSrc="/LOGO_BLACK.jpeg"

@@ -1,4 +1,3 @@
-import React from 'react';
 
 export default function SelectOption({ name, value, onChange, options, required = false, className }) {
   return (

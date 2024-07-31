@@ -1,5 +1,5 @@
-
-import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/organisms/Header';
 import { useAuth } from '../context/AuthContext';
@@ -24,7 +24,6 @@ const PedidosRealizadosADMIN = () => {
         if (response.ok) {
           const data = await response.json();
           
-          // Fetch order details for each order
           const orderDetailsPromises = data.map(order =>
             fetch(`https://athleticstoreapi.integrador.xyz/api/Detalle_pedidos`, {
               method: 'GET',
@@ -60,6 +59,9 @@ const PedidosRealizadosADMIN = () => {
 
   return (
     <div className="min-h-screen bg-black">
+            <Helmet>
+            <title>PEDIDOS REALIZADOS</title>
+            </Helmet>
     <Header
       title="PEDIDOS REALIZADOS"
       logoSrc="/LOGO_BLACK.jpeg"

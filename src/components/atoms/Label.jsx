@@ -1,6 +1,4 @@
 
-import React from 'react';
-
 function Label({ text, htmlFor, children, className = '' }) {
   return (
     <label htmlFor={htmlFor} className={`block ${className}`}>

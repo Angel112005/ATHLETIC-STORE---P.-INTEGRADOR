@@ -1,5 +1,5 @@
-
-import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/organisms/Header';
 import { useProductContext } from '../context/ProductContext';
@@ -60,6 +60,9 @@ function ProductCatalog() {
 
   return (
     <div className="min-h-screen bg-black">
+            <Helmet>
+            <title>CATÁLOGO</title>
+            </Helmet>
       <Header 
         title="CATÁLOGO DE ARTÍCULOS" 
         logoSrc="/LOGO_BLACK.jpeg" 

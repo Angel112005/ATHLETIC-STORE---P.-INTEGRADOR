@@ -1,4 +1,3 @@
-import React from 'react';
 
 export default function TextAreaOption({ name, value, onChange, required = false, className }) {
   return (

@@ -1,6 +1,3 @@
-
-
-import React from 'react';
 import Label from '../atoms/Label';
 import Input from '../atoms/Input';
 import SelectOption from '../atoms/SelectOption';
@@ -17,6 +14,6 @@ export default function Field({ label, type, name, value, onChange, options, req
       ) : (
         <Input type={type} name={name} value={value} onChange={onChange} required={required} className={className} />
       )}
-    </div>
-  );
+    </div>
+  );
 }

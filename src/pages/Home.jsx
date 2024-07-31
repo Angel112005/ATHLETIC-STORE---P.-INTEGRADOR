@@ -1,10 +1,11 @@
-
+import { Helmet } from 'react-helmet';
 import React, { useEffect } from 'react';
 import Header from '../components/organisms/Header';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import BoxHomeClient from '../components/organisms/BoxHomeClient';
 import BoxCatologoHome from '../components/organisms/BoxCatalogoHome';
+import Swal from 'sweetalert2';
 
 function Home() {
     const navigate = useNavigate();
@@ -12,16 +13,28 @@ function Home() {
     const isLoggedIn = !!authToken;
 
     const handleHomeClick = () => {
-        navigate('/'); // Navegar a la página principal
+        navigate('/'); 
     };
 
     const handleLogoutClick = () => {
-        logout();
-        navigate('/');
+        Swal.fire({
+            title : '¿Estás seguro de cerrar sesión?',
+            showCancelButton: true,
+            confirmButtonText: 'Aceptar',
+            cancelButtonText: 'Cancelar'
+          }).then((Result) => {
+            if(Result.isConfirmed){
+              logout();
+              navigate('/');
+            }
+          })
     };
 
     return (
         <div className="min-h-screen w-full overflow-hidden bg-gradient-to-r from-neutral-700 via-black to-stone-700 bg-[length:400%_400%] animate-gradient-x">
+                  <Helmet>
+                    <title>INICIO</title>
+                </Helmet>
             <Header
                 onHomeClick={handleHomeClick}
                 logoSrc="/LOGO_BLACK.jpeg"
