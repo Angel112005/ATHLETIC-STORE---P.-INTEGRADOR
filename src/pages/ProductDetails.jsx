@@ -24,7 +24,6 @@ function ProductDetails() {
           throw new Error('Error al recuperar el producto');
         }
         const data = await response.json();
-        console.log('Producto recuperado:', data); // Verifica la respuesta de la API
         setProduct(data);
       } catch (error) {
         console.error('Error al recuperar el producto:', error);

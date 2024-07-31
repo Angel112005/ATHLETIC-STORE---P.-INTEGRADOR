@@ -27,7 +27,6 @@ const Wishlist = () => {
 
         if (response.ok) {
           const data = await response.json();
-          console.log('Wishlist cargada:', data);
           setWishlist(data);
         } else {
           const errorData = await response.json();
@@ -139,7 +138,6 @@ const Wishlist = () => {
     const total = calculateTotal();
     const fecha = new Date().toLocaleDateString();
     const estatus = 'Pendiente';
-    console.log('Creando pedido:', { Fecha: fecha, Id_Cliente: clientId, Total: total, Estatus: estatus });
 
     try {
       const response = await fetch('https://athleticstoreapi.integrador.xyz/api/Pedidos', {
@@ -158,7 +156,6 @@ const Wishlist = () => {
 
       if (response.ok) {
         const pedidoData = await response.json();
-        console.log('Pedido creado:', pedidoData);
 
         // Crear detalle de pedidos
         await Promise.all(
@@ -183,7 +180,6 @@ const Wishlist = () => {
               console.error('Error al crear el detalle del pedido:', errorData);
             } else {
               const detalleData = await detalleResponse.json();
-              console.log('Detalle del pedido creado:', detalleData);
             }
           })
         );
