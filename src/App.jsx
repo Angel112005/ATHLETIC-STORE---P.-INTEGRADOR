@@ -26,7 +26,7 @@ function App() {
         <ProductProvider>
             <Router>
                 <Routes>
-                    <Route path="/" element={<HomeAdmin />} />
+                    <Route path="/" element={<Home />} />
                     {/* <Route path="/HomeAdmin" element={<HomeAdmin />}  */}
                     <Route path="/Login" element={<Login />} />
                     <Route path="/Register" element={<Register />} />
